@@ -20,7 +20,7 @@ public class TokenAutenticacao {
 
     @ManyToOne
     @JoinColumn(name = "assinatura_id", nullable = false)
-    private Usuario usuario;
+    private Assinatura assinatura;
 
     @Column(nullable = false, length = 255, unique = true)
     private String chave_api;
@@ -35,11 +35,17 @@ public class TokenAutenticacao {
     private Boolean ativo;
 
     @PrePersist
-    private void setCreationDate(){
+    private void setDefaults(){
         this.data_criacao = LocalDateTime.now();
-    }
 
-    private void setExpiracao(){
-        this.expiracao = LocalDateTime.now();
+        // O token nunca pode expirar depois da assinatura
+        if (this.assinatura != null && this.assinatura.getExpiracao() != null) {
+            this.expiracao = this.assinatura.getExpiracao();
+        } else {
+            // Se não houver assinatura válida, o token expira em 1 dia
+            this.expiracao = this.data_criacao.plusDays(1);
+        }
+
+        this.ativo = true;
     }
 }
