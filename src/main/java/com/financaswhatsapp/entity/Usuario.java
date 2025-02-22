@@ -29,6 +29,14 @@ public class Usuario {
         this.data_criacao = LocalDateTime.now();
     }
 
+    public Usuario() {
+    }
+
+    public Usuario(String numero_whatsapp, String nome) {
+        this.numero_whatsapp = numero_whatsapp;
+        this.nome = nome;
+    }
+
     @Override
     public String toString() {
         return "Usuario{id=" + id + ", nome='" + nome + "', numero_whatsapp='" + numero_whatsapp + "'}";
