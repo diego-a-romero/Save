@@ -22,12 +22,6 @@ public class FinancasWhatsappApplication implements CommandLineRunner {
 	public void run(String...args) {
 		System.out.println("Iniciando o cadastro no Banco de Dados");
 
-		Usuario usuario = new Usuario(
-				"11924692469",
-				"Diego Romairo"
-		);
-
-		usuarioRepository.save(usuario);
 		System.out.println(usuarioRepository.findAll());
 	}
 }

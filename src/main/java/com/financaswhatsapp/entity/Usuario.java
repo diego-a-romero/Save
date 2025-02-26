@@ -54,4 +54,20 @@ public class Usuario {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public LocalDateTime getData_criacao() {
+        return data_criacao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getNumero_whatsapp() {
+        return numero_whatsapp;
+    }
+
+    public UUID getId() {
+        return id;
+    }
 }
