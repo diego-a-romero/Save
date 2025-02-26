@@ -63,8 +63,16 @@ public class Usuario {
         return nome;
     }
 
-    public String getNumero_whatsapp() {
+    public String getNumeroWhatsapp() {
         return numero_whatsapp;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setNumeroWhatsapp(String numero_whatsapp) {
+        this.numero_whatsapp = numero_whatsapp;
     }
 
     public UUID getId() {

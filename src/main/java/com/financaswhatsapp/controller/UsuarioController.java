@@ -1,9 +1,11 @@
 package com.financaswhatsapp.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.financaswhatsapp.entity.Usuario;
 import com.financaswhatsapp.repository.UsuarioRepository;
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -24,8 +26,29 @@ public class UsuarioController {
 
     @PostMapping
     public Usuario cadastrarUsuarios(@RequestBody Usuario usuario) {
-
         return usuarioRepository.save(usuario);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> modificarUsuarios(@RequestBody Usuario novoUsuario, @PathVariable UUID id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não localizado"));
+        if (novoUsuario.getNome() != null && !novoUsuario.getNome().isEmpty()) {
+            usuario.setNome(novoUsuario.getNome());
+        }
+        if (novoUsuario.getNumeroWhatsapp() != null && !novoUsuario.getNumeroWhatsapp().isEmpty()){
+            usuario.setNumeroWhatsapp(novoUsuario.getNumeroWhatsapp());
+        }
+        usuarioRepository.save(usuario);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarUsuarios(@PathVariable UUID id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não localizado"));
+        usuarioRepository.delete(usuario);
+        return ResponseEntity.noContent().build();
     }
 }
 
