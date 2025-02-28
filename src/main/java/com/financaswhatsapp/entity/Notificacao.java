@@ -28,4 +28,12 @@ public class Notificacao {
     private void setCreationDate(){
         this.data_envio = LocalDateTime.now();
     }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
 }

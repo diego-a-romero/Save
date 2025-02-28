@@ -13,4 +13,12 @@ public class Categoria {
 
     @Column(unique = true, nullable = false, length = 50) // Nome deve ser único
     private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

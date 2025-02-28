@@ -46,4 +46,28 @@ public class Assinatura {
     public LocalDateTime getExpiracao() {
         return expiracao;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setExpiracao(LocalDateTime expiracao) {
+        this.expiracao = expiracao;
+    }
+
+    public PlanoAssinatura getPlano() {
+        return plano;
+    }
+
+    public void setPlano(PlanoAssinatura plano) {
+        this.plano = plano;
+    }
+
+    public StatusAssinatura getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusAssinatura status) {
+        this.status = status;
+    }
 }
