@@ -25,7 +25,7 @@ public class AssinaturaController {
     }
 
     @PostMapping
-    public ResponseEntity<Assinatura> cadastrarAssinatura(@RequestBody Assinatura assinatura) {
+    public ResponseEntity<Assinatura> cadastrarAssinaturas(@RequestBody Assinatura assinatura) {
         Assinatura novaAssinatura = assinaturaRepository.save(assinatura);
         return ResponseEntity.status(201).body(novaAssinatura);
     }

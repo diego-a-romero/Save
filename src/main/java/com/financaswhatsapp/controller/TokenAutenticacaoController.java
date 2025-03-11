@@ -9,7 +9,7 @@ import java.util.UUID;
 
 
 @RestController
-@RequestMapping("/tokensAutenticacao")
+@RequestMapping("/tokens-autenticacao")
 public class TokenAutenticacaoController {
 
     private final TokenAutenticacaoRepository tokenAutenticacaoRepository;
@@ -20,35 +20,35 @@ public class TokenAutenticacaoController {
     }
 
     @GetMapping
-    public List<TokenAutenticacao> listarTokenAutenticacaos() {
+    public List<TokenAutenticacao> listarTokensAutenticacao() {
         return tokenAutenticacaoRepository.findAll(); // Retorna todos os usuários do banco
     }
 
     @PostMapping
-    public ResponseEntity<TokenAutenticacao> cadastrarTokenAutenticacao(@RequestBody TokenAutenticacao tokenAutenticacao) {
+    public ResponseEntity<TokenAutenticacao> cadastrarTokensAutenticacao(@RequestBody TokenAutenticacao tokenAutenticacao) {
         TokenAutenticacao novaTokenAutenticacao = tokenAutenticacaoRepository.save(tokenAutenticacao);
         return ResponseEntity.status(201).body(novaTokenAutenticacao);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TokenAutenticacao> modificarTokenAutenticacaos(@RequestBody TokenAutenticacao novoTokenAutenticacao, @PathVariable UUID id) {
+    public ResponseEntity<TokenAutenticacao> modificarTokensAutenticacao(@RequestBody TokenAutenticacao novoTokenAutenticacao, @PathVariable UUID id) {
         TokenAutenticacao tokenAutenticacao = tokenAutenticacaoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("TokenAutenticacao não localizada"));
-        if (novoTokenAutenticacao.getPlano() != null) {
-            tokenAutenticacao.setPlano(novoTokenAutenticacao.getPlano());
+        if (novoTokenAutenticacao.getChave_api() != null) {
+            tokenAutenticacao.setChave_api(novoTokenAutenticacao.getChave_api());
         }
         if (novoTokenAutenticacao.getExpiracao() != null) {
             tokenAutenticacao.setExpiracao(novoTokenAutenticacao.getExpiracao());
         }
-        if (novoTokenAutenticacao.getStatus() != null) {
-            tokenAutenticacao.setStatus(novoTokenAutenticacao.getStatus());
+        if (novoTokenAutenticacao.getAtivo() != null) {
+            tokenAutenticacao.setAtivo(novoTokenAutenticacao.getAtivo());
         }
         tokenAutenticacaoRepository.save(tokenAutenticacao);
         return ResponseEntity.ok(tokenAutenticacao);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarTokenAutenticacaos(@PathVariable UUID id) {
+    public ResponseEntity<Void> deletarTokensAutenticacao(@PathVariable UUID id) {
         TokenAutenticacao tokenAutenticacao = tokenAutenticacaoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("TokenAutenticacao não localizada"));
         tokenAutenticacaoRepository.delete(tokenAutenticacao);

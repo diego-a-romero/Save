@@ -24,7 +24,7 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> cadastrarCategoria(@RequestBody Categoria categoria) {
+    public ResponseEntity<Categoria> cadastrarCategorias(@RequestBody Categoria categoria) {
         // Verifica se já existe uma categoria com o mesmo nome
         Categoria categoriaExistente = categoriaRepository.findByNome(categoria.getNome()).orElse(null);
 

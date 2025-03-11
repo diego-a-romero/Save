@@ -48,4 +48,28 @@ public class TokenAutenticacao {
 
         this.ativo = true;
     }
+
+    public LocalDateTime getExpiracao() {
+        return expiracao;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public String getChave_api() {
+        return chave_api;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public void setExpiracao(LocalDateTime expiracao) {
+        this.expiracao = expiracao;
+    }
+
+    public void setChave_api(String chave_api) {
+        this.chave_api = chave_api;
+    }
 }

@@ -39,18 +39,66 @@ public class Transacao {
     private RecorrenciaPagamento recorrencia;
 
     @Column(nullable = false)
-    private LocalDateTime data_criacao;
+    private LocalDateTime dataCriacao;
 
     @Column(nullable = false)
-    private LocalDateTime data;
+    private LocalDateTime dataTransacao;
 
     @PrePersist
     private void setDefaultDates() {
-        this.data_criacao = LocalDateTime.now();
+        this.dataCriacao = LocalDateTime.now();
 
         // Se o usuário não informar a data da transação, define como "agora"
-        if (this.data == null) {
-            this.data = LocalDateTime.now();
+        if (this.dataTransacao == null) {
+            this.dataTransacao = LocalDateTime.now();
         }
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public RecorrenciaPagamento getRecorrencia() {
+        return recorrencia;
+    }
+
+    public void setRecorrencia(RecorrenciaPagamento recorrencia) {
+        this.recorrencia = recorrencia;
+    }
+
+    public LocalDateTime getDataTransacao() {
+        return dataTransacao;
+    }
+
+    public void setDataTransacao(LocalDateTime dataTransacao) {
+        this.dataTransacao = dataTransacao;
     }
 }
