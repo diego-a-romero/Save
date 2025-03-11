@@ -1,4 +1,4 @@
 package com.financaswhatsapp.dto;
 
-public class LancamentosDTO {
+public class TransacaoResponseDTO {
 }
